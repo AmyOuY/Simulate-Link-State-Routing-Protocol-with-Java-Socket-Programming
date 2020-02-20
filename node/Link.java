@@ -1,7 +1,7 @@
 package socs.network.node;
 
-public class Link {
 
+public class Link {
   RouterDescription router1;
   RouterDescription router2;
   short weights;
