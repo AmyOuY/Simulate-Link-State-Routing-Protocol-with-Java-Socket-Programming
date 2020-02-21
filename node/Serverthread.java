@@ -1,5 +1,4 @@
 package socs.network.node;
-
 import socs.network.message.LSA;
 import socs.network.message.SOSPFPacket;
 import java.net.*;
@@ -9,6 +8,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.sql.SQLSyntaxErrorException;
 import java.util.Vector;
+
+
 public class Serverthread implements Runnable{
     private ServerSocket serverSocket;
     Router router;
@@ -23,6 +24,7 @@ public class Serverthread implements Runnable{
         System.out.println("Opened a server socket with IP: " + serverSocket.getInetAddress() + ":" + serverSocket.getLocalPort());
     }
 
+    
     public void run() {
         while(true) {
             try {
@@ -37,7 +39,5 @@ public class Serverthread implements Runnable{
                 break;
             }
         }
-
     }
-
 }
