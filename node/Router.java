@@ -46,8 +46,7 @@ public class Router {
 
   /** output the shortest path to the given destination ip
   format: source ip address  -> ip address -> ... -> destination ip
-  @param destinationIP the ip adderss of the destination simulated router
-  */
+  @param destinationIP the ip adderss of the destination simulated router */
   private void processDetect(String destinationIP) {
       //System.out.println(lsd.getShortestPath(destinationIP));
       String path = lsd.getShortestPath(destinationIP);
@@ -60,7 +59,7 @@ public class Router {
 
   
 
-  //delete neighbor from LSD
+  /**delete neighbor from LSD*/
   public void deleteFromLSD(String deletedIP) {
       LSA lsa = this.lsd._store.get(this.rd.simulatedIPAddress);
       for (LinkDescription l : lsa.links) {
@@ -76,8 +75,7 @@ public class Router {
   
   /** disconnect with the router identified by the given destination ip address
   Notice: this command should trigger the synchronization of database
-  @param portNumber the port number which the link attaches at
-  */
+  @param portNumber the port number which the link attaches at */
   private void processDisconnect(short portNumber) {
       if (ports[portNumber] != null) {
           if (ports[portNumber].router2.status != null) {
@@ -108,12 +106,10 @@ public class Router {
 
 
 
-
   /** attach the link to the remote router, which is identified by the given simulated ip;
    to establish the connection via socket, you need to identify the process IP and process Port;
    additionally, weight is the cost to transmitting data through the link
-   NOTE: this command should not trigger link database synchronization
-   */
+   NOTE: this command should not trigger link database synchronization */
   private void processAttach(String processIP, short processPort,
                              String simulatedIP, short weight) {
       //check if all ports are occupied
@@ -179,7 +175,7 @@ public class Router {
   
   
   
-  // broadcast Hello to neighbors
+  /** broadcast Hello to neighbors */
   private void processStart() {
       //for each attached sever prepare to send hello and LSAUpdate packets
       for(int i = 0; i < ports.length; i++) {
@@ -208,7 +204,7 @@ public class Router {
   
   
   
-  //broadcast LSAUpdate to all neighbors  
+  /** broadcast LSAUpdate to all neighbors */  
   public void LSAUpdate() {	  
       for(int i = 0; i < ports.length; i++) {
           if (ports[i] != null) {
@@ -235,7 +231,7 @@ public class Router {
   
   
   
-  //broadcast LSAUpdate to all neighbors except the one passed in as argument 
+  /** broadcast LSAUpdate to all neighbors except the one passed in as argument */
   public void LSAUpdate(String neighbor) {	  
       for(int i = 0; i < ports.length; i++) {
           if (ports[i] != null && !(ports[i].router2.simulatedIPAddress.equals(neighbor))) {
@@ -276,7 +272,7 @@ public class Router {
    
    
    
-   // output the neighbors of the router
+   /** output the neighbors of the router */
    private void processNeighbors() {
        System.out.println("Neighbors of " + this.rd.simulatedIPAddress + ":");
        //For current router print neighbours which are r2 in all links
@@ -291,7 +287,7 @@ public class Router {
    
    
    
-   // disconnect with all neighbors and quit the program
+   /** disconnect with all neighbors and quit the program */
    private void processQuit() {
        System.out.println("Process Quit!");
        System.exit(0);
