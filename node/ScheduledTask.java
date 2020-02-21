@@ -18,14 +18,12 @@ public class ScheduledTask extends TimerTask{
         //if TIMEOUT, remove neighbor from ports and lsd, then broadcast LSAUpdate for synchronization 
 	    for(int i = 0; i < ports.length; i++) {
 			if (ports[i] != null) {
-	        	if (System.currentTimeMillis() - router.heartBeats[i] > Router.HEARTBEAT_TIMEOUT) {
-	        		//System.out.println(ports[i].router2.simulatedIPAddress + "at " + ports[i] + " TIMEOUT");
-	        		router.deleteFromLSD(ports[i].router2.simulatedIPAddress);
-	        		router.LSAUpdate();
-	        		ports[i] = null;
-	        		
-	        	}
-	        }
+				if (System.currentTimeMillis() - router.heartBeats[i] > Router.HEARTBEAT_TIMEOUT) {
+					router.deleteFromLSD(ports[i].router2.simulatedIPAddress);
+					router.LSAUpdate();
+					ports[i] = null;
+				}
+			}
 	    } 
 		
 	    //send heartbeat message to each connected server
