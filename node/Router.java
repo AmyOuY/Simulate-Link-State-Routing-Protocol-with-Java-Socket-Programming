@@ -1,5 +1,4 @@
 package socs.network.node;
-
 import socs.network.util.Configuration;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
