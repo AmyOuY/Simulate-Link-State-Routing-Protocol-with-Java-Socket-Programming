@@ -1,1 +1,2 @@
 # Simulate-Link-State-Routing-Protocol-with-Java-Socket-Programming
+Developed a multi-threaded server to handle concurrent socket requests/messages from the client. Each router maintains its own description of the connectivity of the complete network and calculates the best next hop for all possible destinations independently using Dijkstra's shortest paths algorithm. Link State Routing Protocol is used to synchronize the network description in all nodes. 
