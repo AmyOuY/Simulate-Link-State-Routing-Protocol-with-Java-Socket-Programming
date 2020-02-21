@@ -17,7 +17,7 @@ public class LinkStateDatabase {
 	}
 
 
-        /** output the shortest path from this router to the destination with the given IP address*/
+    /** output the shortest path from this router to the destination with the given IP address*/
 	String getShortestPath(String destinationIP) {
 		String source = rd.simulatedIPAddress;
 		if (source.equals(destinationIP)) {
@@ -96,7 +96,7 @@ public class LinkStateDatabase {
 	}
   
   
-        /** initialize the linkstate database by adding an entry about the router itself */
+    /** initialize the linkstate database by adding an entry about the router itself */
 	private LSA initLinkStateDatabase() {
 		LSA lsa = new LSA();
 		lsa.linkStateID = rd.simulatedIPAddress;
@@ -108,7 +108,6 @@ public class LinkStateDatabase {
 		lsa.links.add(ld);
 		return lsa;
 	}
-	
 	
 	
 	
